@@ -1,0 +1,2 @@
+function NoticeListPage($scope, $stateParams) {
+}

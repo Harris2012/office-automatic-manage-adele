@@ -1,0 +1,13 @@
+.icheck-inline, .icheck-inline + .icheck-inline {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+
+.loading:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: central;
+    width: 32px;
+    height: 32px;
+    background: url('../lib/images/loading.gif') no-repeat;
+}

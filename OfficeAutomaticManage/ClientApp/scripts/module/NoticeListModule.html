@@ -1,0 +1,73 @@
+<div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <a class="btn btn-success" ng-click="openCreate()">新增</a>
+        </div>
+    </div>
+
+    <div class="form-group" ng-show="!items_loaded">
+        <div class="col-sm-12">
+            <i class="loading"></i>列表加载中，请稍后...
+        </div>
+    </div>
+    <div class="form-group" ng-show="items_loaded && items_message != null && items_message.length > 0">
+        <div class="col-sm-12">
+            <p>{{items_message}}</p>
+        </div>
+    </div>
+
+    <table class="table table-hover" ng-show="items_loaded">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>标题</th>
+                <th>正文</th>
+                <th>分类</th>
+                <th>创建时间</th>
+                <th>最后更新时间</th>
+                <th>查看</th>
+                <th>编辑</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.body}}</td>
+                <td>{{item.category.title}}</td>
+                <td>{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{item.lastUpdateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td><a ng-click="openItem(item.id)">查看</a></td>
+                <td><a ng-click="openUpdate(item.id)">编辑</a></td>
+                <td><a ng-click="disable(item.id)" href>删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group" ng-show="!count_loaded">
+        <div class="col-sm-12">
+            <i class="loading"></i>页码加载中，请稍后...
+        </div>
+    </div>
+    <div class="form-group" ng-show="count_loaded && count_message != null && count_message.length > 0">
+        <div class="col-sm-12">
+            <p>{{count_message}}</p>
+        </div>
+    </div>
+    <div class="row" ng-show="count_loaded">
+        <div class="col-sm-12">
+            <ul uib-pagination
+                max-size="8"
+                items-per-page="15"
+                total-items="totalCount"
+                ng-model="currentPage"
+                ng-change="pageChanged()"
+                class="pagination"
+                previous-text="上一页"
+                next-text="下一页"
+                boundary-link-numbers="true"></ul>
+        </div>
+    </div>
+
+</div>

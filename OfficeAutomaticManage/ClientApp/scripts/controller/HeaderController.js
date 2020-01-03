@@ -1,0 +1,3 @@
+function HeaderController($scope, OfficeAutomaticManageService) {
+
+}

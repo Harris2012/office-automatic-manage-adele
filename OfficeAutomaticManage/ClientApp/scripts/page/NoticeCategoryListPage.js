@@ -1,0 +1,2 @@
+function NoticeCategoryListPage($scope, $stateParams) {
+}

@@ -1,0 +1,11 @@
+<ol class="breadcrumb">
+    <li><a ui-sref="app.welcome">首页</a></li>
+    <li><a ui-sref="app.layout.default.notice-list({})">通知公告列表</a></li>
+    <li class="active">编辑</li>
+</ol>
+<notice-update-module id="{{id}}" api="api"></notice-update-module>
+<div class="form-group row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <button ng-click="confirmUpdate()" class="btn btn-primary">确认更新</button>
+    </div>
+</div>

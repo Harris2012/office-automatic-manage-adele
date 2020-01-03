@@ -1,0 +1,11 @@
+<ol class="breadcrumb">
+    <li><a ui-sref="app.welcome">首页</a></li>
+    <li><a ui-sref="app.layout.default.notice-category-list({})">通知分类列表</a></li>
+    <li class="active">新增</li>
+</ol>
+<notice-category-create-module api="api"></notice-category-create-module>
+<div class="form-group row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <button ng-click="confirmCreate()" class="btn btn-primary">确认添加</button>
+    </div>
+</div>
