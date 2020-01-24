@@ -21,7 +21,7 @@ namespace Canos.OfficeAutomatic.Repository.Mysql
 
         public MetaNoticeCategoryEntity GetById(int id)
         {
-            string sql = "select name as Name, title as Title from `notice_category` where Id = ?";
+            string sql = "select name as Name, title as Title from `oam_notice_category` where Id = ?";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
@@ -31,7 +31,7 @@ namespace Canos.OfficeAutomatic.Repository.Mysql
 
         public List<MetaNoticeCategoryEntity> GetEntityList()
         {
-            string sql = "select name as Name, title as Title from `notice_category`";
+            string sql = "select name as Name, title as Title from `oam_notice_category`";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {

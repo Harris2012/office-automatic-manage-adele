@@ -37,7 +37,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice`
+from `oam_notice`
 where
   id = @Id
   and data_status = 1;";
@@ -64,7 +64,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice`
+from `oam_notice`
 where
   data_status = 1;";
 
@@ -92,7 +92,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice`
+from `oam_notice`
 where
   data_status = 1
 limit @Start, @Count";
@@ -108,7 +108,7 @@ limit @Start, @Count";
         /// </summary>
         public int GetTotalCount()
         {
-            string sql = @"select count(1) from `notice` where data_status = 1";
+            string sql = @"select count(1) from `oam_notice` where data_status = 1";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
@@ -122,7 +122,7 @@ limit @Start, @Count";
         public void Create(NoticeEntity entity)
         {
             string sql = @"
-insert into `notice`(
+insert into `oam_notice`(
   title,
   body,
   category,
@@ -149,7 +149,7 @@ values(
         public void UpdateById(NoticeEntity entity)
         {
             string sql = @"
-update `notice`
+update `oam_notice`
 set
   title = @Title,
   body = @Body,
@@ -171,7 +171,7 @@ where
         /// </summary>
         public void Enable(int id)
         {
-            string sql = @"update `notice` set data_status = 1 where id = @Id;";
+            string sql = @"update `oam_notice` set data_status = 1 where id = @Id;";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
@@ -184,7 +184,7 @@ where
         /// </summary>
         public void Disable(int id)
         {
-            string sql = @"update `notice` set data_status = 2 where id = @Id;";
+            string sql = @"update `oam_notice` set data_status = 2 where id = @Id;";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {

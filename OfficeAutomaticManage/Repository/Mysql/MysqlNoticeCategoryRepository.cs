@@ -37,7 +37,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice_category`
+from `oam_notice_category`
 where
   id = @Id
   and data_status = 1;";
@@ -62,7 +62,7 @@ select
   data_status as DataStatus,
   create_time as CreateTime,
   last_update_time as LastUpdateTime
-from `notice_category`
+from `oam_notice_category`
 where
   name = @Name
   and data_status = 1;";
@@ -89,7 +89,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice_category`
+from `oam_notice_category`
 where
   data_status = 1;";
 
@@ -117,7 +117,7 @@ select
   create_time as CreateTime,
   last_update_time as LastUpdateTime,
   1 as _
-from `notice_category`
+from `oam_notice_category`
 where
   data_status = 1
 limit @Start, @Count";
@@ -133,7 +133,7 @@ limit @Start, @Count";
         /// </summary>
         public int GetTotalCount()
         {
-            string sql = @"select count(1) from `notice_category` where data_status = 1";
+            string sql = @"select count(1) from `oam_notice_category` where data_status = 1";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
@@ -147,7 +147,7 @@ limit @Start, @Count";
         public void Create(NoticeCategoryEntity entity)
         {
             string sql = @"
-insert into `notice_category`(
+insert into `oam_notice_category`(
   name,
   title,
   remark,
@@ -174,7 +174,7 @@ values(
         public void UpdateById(NoticeCategoryEntity entity)
         {
             string sql = @"
-update `notice_category`
+update `oam_notice_category`
 set
   name = @Name,
   title = @Title,
@@ -197,7 +197,7 @@ where
         public void UpdateByPrimaryProperty(NoticeCategoryEntity entity)
         {
             string sql = @"
-update `notice_category`
+update `oam_notice_category`
 set
   id = @Id,
   title = @Title,
@@ -219,7 +219,7 @@ where
         /// </summary>
         public void Enable(int id)
         {
-            string sql = @"update `notice_category` set data_status = 1 where id = @Id;";
+            string sql = @"update `oam_notice_category` set data_status = 1 where id = @Id;";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
@@ -232,7 +232,7 @@ where
         /// </summary>
         public void Disable(int id)
         {
-            string sql = @"update `notice_category` set data_status = 2 where id = @Id;";
+            string sql = @"update `oam_notice_category` set data_status = 2 where id = @Id;";
 
             using (var mysqlConn = connectionProvider.GetConnection())
             {
