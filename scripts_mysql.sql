@@ -1,4 +1,4 @@
-CREATE TABLE `notice` (
+CREATE TABLE `oam_notice` (
     `id` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
     `title` varchar(100) NULL COMMENT 'Title',
     `body` varchar(100) NULL COMMENT 'Body',
@@ -9,7 +9,7 @@ CREATE TABLE `notice` (
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8mb4 COMMENT='Notice';
 
-CREATE TABLE `notice_category` (
+CREATE TABLE `oam_notice_category` (
     `id` int NOT NULL AUTO_INCREMENT COMMENT 'Id',
     `name` varchar(100) NULL COMMENT 'Name',
     `title` varchar(100) NULL COMMENT 'Title',
