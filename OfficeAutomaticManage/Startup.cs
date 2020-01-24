@@ -28,7 +28,7 @@ namespace Canos.OfficeAutomatic
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var connectionString = Configuration.GetConnectionString("localhost-officeautomaticdb");
+            var connectionString = Configuration.GetConnectionString("localhost");
             services.AddTransient(v => new MySqlConnection(connectionString));
             services.AddSingleton(new MysqlConnectionProvider(connectionString));
             services
@@ -44,7 +44,10 @@ namespace Canos.OfficeAutomatic
                 configuration.RootPath = "ClientApp";
             });
 
-            var iMvcBuilder = services.AddControllers();
+            var iMvcBuilder = services.AddControllers(options =>
+            {
+                options.Filters.Add(new GlobalExceptionFilter());
+            });
 
             ConfigureIMvc(iMvcBuilder);
         }

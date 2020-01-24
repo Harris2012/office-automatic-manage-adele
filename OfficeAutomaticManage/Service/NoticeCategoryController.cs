@@ -50,6 +50,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCategoryItemsResponse response = new NoticeCategoryItemsResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             int pageIndex = request.PageIndex != null && request.PageIndex >= 0 ? request.PageIndex.Value : 1;
 
             List<NoticeCategoryEntity> entityList = noticeCategoryRepository.GetPagedEntityList(pageIndex, PAGE_SIZE);
@@ -65,6 +71,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeCategoryDataResponse Data([FromBody]NoticeCategoryDataRequest request)
         {
             NoticeCategoryDataResponse response = new NoticeCategoryDataResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             int pageIndex = request.PageIndex != null && request.PageIndex >= 0 ? request.PageIndex.Value : 1;
 
@@ -83,6 +95,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCategoryCountResponse response = new NoticeCategoryCountResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             int count = noticeCategoryRepository.GetTotalCount();
 
             response.TotalCount = count;
@@ -96,6 +114,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeCategoryItemResponse Item([FromBody]NoticeCategoryItemRequest request)
         {
             NoticeCategoryItemResponse response = new NoticeCategoryItemResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             NoticeCategoryEntity entity = null;
             if (request.Id > 0)
@@ -127,6 +151,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCategoryCreateResponse response = new NoticeCategoryCreateResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             noticeCategoryRepository.Create(noticeCategoryConvertor.ToEntity(request));
 
             metaNoticeCategoryProvider.Reload();
@@ -141,6 +171,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCategoryEmptyResponse response = new NoticeCategoryEmptyResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
 
             response.Status = 1;
             return response;
@@ -150,8 +186,13 @@ namespace Canos.OfficeAutomatic.Service
         [Route("basic")]
         public NoticeCategoryBasicResponse Basic([FromBody]NoticeCategoryBasicRequest request)
         {
-
             NoticeCategoryBasicResponse response = new NoticeCategoryBasicResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             NoticeCategoryEntity entity = null;
             if (request.Id > 0)
@@ -181,8 +222,13 @@ namespace Canos.OfficeAutomatic.Service
         [Route("update")]
         public NoticeCategoryUpdateResponse Update([FromBody]NoticeCategoryUpdateRequest request)
         {
-
             NoticeCategoryUpdateResponse response = new NoticeCategoryUpdateResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             if (request.Id > 0)
             {
@@ -223,6 +269,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCategoryEnableResponse response = new NoticeCategoryEnableResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             noticeCategoryRepository.Enable(request.Id);
 
             response.Status = 1;
@@ -234,6 +286,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeCategoryDisableResponse Disable([FromBody]NoticeCategoryDisableRequest request)
         {
             NoticeCategoryDisableResponse response = new NoticeCategoryDisableResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             noticeCategoryRepository.Disable(request.Id);
 

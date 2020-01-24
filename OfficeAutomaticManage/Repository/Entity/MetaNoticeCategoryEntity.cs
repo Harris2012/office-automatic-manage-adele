@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Canos.OfficeAutomatic.Repository.Entity
 {
+
     public class MetaNoticeCategoryEntity
     {
+
         public string Name { get; set; }
 
         public string Title { get; set; }

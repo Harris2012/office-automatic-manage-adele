@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Canos.OfficeAutomatic.Repository.Entity
 {
+
     public class NoticeEntity
     {
 

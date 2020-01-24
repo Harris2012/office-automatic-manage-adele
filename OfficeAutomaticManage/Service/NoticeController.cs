@@ -50,6 +50,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeItemsResponse response = new NoticeItemsResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             int pageIndex = request.PageIndex != null && request.PageIndex >= 0 ? request.PageIndex.Value : 1;
 
             List<NoticeEntity> entityList = noticeRepository.GetPagedEntityList(pageIndex, PAGE_SIZE);
@@ -65,6 +71,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeDataResponse Data([FromBody]NoticeDataRequest request)
         {
             NoticeDataResponse response = new NoticeDataResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             int pageIndex = request.PageIndex != null && request.PageIndex >= 0 ? request.PageIndex.Value : 1;
 
@@ -83,6 +95,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCountResponse response = new NoticeCountResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             int count = noticeRepository.GetTotalCount();
 
             response.TotalCount = count;
@@ -96,6 +114,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeItemResponse Item([FromBody]NoticeItemRequest request)
         {
             NoticeItemResponse response = new NoticeItemResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             NoticeEntity entity = null;
             if (request.Id > 0)
@@ -121,6 +145,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeCreateResponse response = new NoticeCreateResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             noticeRepository.Create(noticeConvertor.ToEntity(request));
 
             response.Status = 1;
@@ -133,6 +163,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeEmptyResponse response = new NoticeEmptyResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             response.Category = metaNoticeCategoryProvider.GetMetadataList();
 
             response.Status = 1;
@@ -143,8 +179,13 @@ namespace Canos.OfficeAutomatic.Service
         [Route("basic")]
         public NoticeBasicResponse Basic([FromBody]NoticeBasicRequest request)
         {
-
             NoticeBasicResponse response = new NoticeBasicResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             NoticeEntity entity = null;
             if (request.Id > 0)
@@ -168,8 +209,13 @@ namespace Canos.OfficeAutomatic.Service
         [Route("update")]
         public NoticeUpdateResponse Update([FromBody]NoticeUpdateRequest request)
         {
-
             NoticeUpdateResponse response = new NoticeUpdateResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             if (request.Id > 0)
             {
@@ -197,6 +243,12 @@ namespace Canos.OfficeAutomatic.Service
         {
             NoticeEnableResponse response = new NoticeEnableResponse();
 
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
+
             noticeRepository.Enable(request.Id);
 
             response.Status = 1;
@@ -208,6 +260,12 @@ namespace Canos.OfficeAutomatic.Service
         public NoticeDisableResponse Disable([FromBody]NoticeDisableRequest request)
         {
             NoticeDisableResponse response = new NoticeDisableResponse();
+
+            if (request == null)
+            {
+                response.Status = -1;
+                return response;
+            }
 
             noticeRepository.Disable(request.Id);
 
